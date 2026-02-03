@@ -77,6 +77,28 @@ def text_sentiment(text):
         return "Negative"
     return "Neutral"
 
+def speech_sentiment():
+    recognizer = sr.Recognizer()
+
+    with sr.Microphone() as source:
+        recognizer.adjust_for_ambient_noise(source)
+        audio = recognizer.listen(source)
+
+    try:
+        text = recognizer.recognize_google(audio)
+
+        blob = TextBlob(text)
+        polarity = blob.sentiment.polarity
+
+        if polarity > 0:
+            return f"Speech Text: {text}\nSentiment: Positive"
+        elif polarity < 0:
+            return f"Speech Text: {text}\nSentiment: Negative"
+        else:
+            return f"Speech Text: {text}\nSentiment: Neutral"
+
+    except Exception as e:
+        return "Could not understand audio"
 
 def read_document(uploaded_file):
     if uploaded_file is None:
@@ -101,3 +123,4 @@ def read_document(uploaded_file):
 
     else:
         raise ValueError("Unsupported file type")
+
