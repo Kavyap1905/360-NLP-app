@@ -25,6 +25,8 @@ langdetect==1.0.9
 SpeechRecognition==3.10.4
 pyttsx3==2.90
 textblob==0.18.0.post0
-pyaudio
+openai-whisper
+moviepy
+
 
 
