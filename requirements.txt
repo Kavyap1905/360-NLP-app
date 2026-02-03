@@ -3,8 +3,8 @@ packaging==23.2
 wheel==0.41.3
 typing-extensions==4.10.0
 
-torch==2.2.2
-torchvision==0.17.2
+torch
+torchvision
 transformers==4.36.2
 tokenizers==0.15.0
 sentencepiece==0.1.99
@@ -26,3 +26,4 @@ SpeechRecognition==3.10.4
 pyttsx3==2.90
 textblob==0.18.0.post0
 pyaudio
+
