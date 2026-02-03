@@ -99,7 +99,17 @@ def speech_sentiment():
 
     except Exception as e:
         return "Could not understand audio"
+def speech_to_text(audio):
+    r = sr.Recognizer()
+    with sr.AudioFile(audio) as source:
+        audio = r.record(source)
+    return r.recognize_google(audio)
 
+def text_to_speech(text):
+    engine = pyttsx3.init()
+    engine.say(text)
+    engine.runAndWait()
+    
 def camera_emotion_detection():
     detector = FER(mtcnn=True)
     cap = cv2.VideoCapture(0)
@@ -160,5 +170,6 @@ def read_document(uploaded_file):
 
     else:
         raise ValueError("Unsupported file type")
+
 
 
